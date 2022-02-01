@@ -26,6 +26,12 @@ import com.payconiq.assignment.stock.exception.StockNotFoundException;
 import com.payconiq.assignment.stock.model.Stock;
 import com.payconiq.assignment.stock.model.StockDTO;
 
+/**
+ * The test class for Stock controller for the application.
+ * @author rtbrt2009@gmail.com
+ *
+ */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -33,8 +39,7 @@ public class StockControllerTest {
 
 	@Autowired
 	private MockMvc mvc;
-	@Autowired
-	private StockController controller;
+
 	@MockBean
 	private StockService service;
 	
@@ -43,7 +48,6 @@ public class StockControllerTest {
     	int offset=1;
         Page<Stock> stockPage = service.getAllStocks(offset);
         when(service.getAllStocks(offset)).thenReturn(stockPage);
-        //assertEquals(new ResponseEntity<Page<Stock>>(service.getAllStocks(offset), HttpStatus.OK), controller.getAllStock(offset));
         mvc.perform(get("/api/stocks/{offset}",1))
       	      .andExpect(status().isOk());
       }
@@ -79,7 +83,7 @@ public class StockControllerTest {
 	public void saveTest_failure() throws Exception {
 		this.mvc
         .perform(post("/api/stocks"))
-        .andExpect(status().is4xxClientError());
+        .andExpect(status().is(400));
 
 	}
 	
@@ -98,7 +102,7 @@ public class StockControllerTest {
 	public void updateStockById_whenStockNotFound_thenError() throws Exception {
 		this.mvc
         .perform(patch("/api/stocks/{id}",1))
-        .andExpect(status().is4xxClientError());
+        .andExpect(status().is(400));
 
 	}
 	
@@ -111,7 +115,7 @@ public class StockControllerTest {
 	@Test
 	public void deleteStockById_whenStockNotFound_thenError() throws Exception {
 		mvc.perform(delete("/api/stocks/{id}",""))
-	      .andExpect(status().is4xxClientError());
+	      .andExpect(status().is(405));
 	}
 	
 	public static String asJsonString(final Object obj) {

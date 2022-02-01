@@ -76,11 +76,10 @@ public class StockServiceImpl implements StockService{
 	
 	@Override
 	public void delete(int id){
-		stockRepo.findById(id).orElseThrow(()-> new StockNotFoundException(STOCK_NOT_FOUND_EXCEPTION.getCode(),
-				STOCK_NOT_FOUND_EXCEPTION.getStatus(),
-				"Stock can not be deleted for id: "+id+". It's not present."));
+
 		log.info("Deleting stock for id: "+id);
 		stockRepo.deleteById(id);
+		
 	}
 
 }

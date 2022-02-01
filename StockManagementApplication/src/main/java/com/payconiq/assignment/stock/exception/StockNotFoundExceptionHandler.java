@@ -1,5 +1,6 @@
 package com.payconiq.assignment.stock.exception;
 
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
@@ -41,6 +42,15 @@ public class StockNotFoundExceptionHandler {
 		return new StockNotFoundExceptionDTO(StockErrorDetails.STOCK_APPLICATION_BAD_REQUEST_ERROR.getCode(),
 				StockErrorDetails.STOCK_APPLICATION_BAD_REQUEST_ERROR.getStatus(),
 				StockErrorDetails.STOCK_APPLICATION_BAD_REQUEST_ERROR.getMessage());
+	}
+	
+	@ExceptionHandler(EmptyResultDataAccessException.class)
+	@ResponseStatus(HttpStatus.NOT_FOUND)
+	@ResponseBody
+	public StockNotFoundExceptionDTO handleInternalServerError(EmptyResultDataAccessException ex) {
+		return new StockNotFoundExceptionDTO(StockErrorDetails.STOCK_NOT_FOUND_EXCEPTION.getCode(),
+				StockErrorDetails.STOCK_NOT_FOUND_EXCEPTION.getStatus(),
+				StockErrorDetails.STOCK_NOT_FOUND_EXCEPTION.getMessage());
 	}
 
 }

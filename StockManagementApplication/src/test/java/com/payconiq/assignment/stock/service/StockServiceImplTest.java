@@ -22,6 +22,12 @@ import com.payconiq.assignment.stock.model.Stock;
 import com.payconiq.assignment.stock.model.StockDTO;
 import com.payconiq.assignment.stock.repository.StockRepository;
 
+/**
+ * The test class for Stock service implementation for the application.
+ * @author rtbrt2009@gmail.com
+ *
+ */
+
 @RunWith(MockitoJUnitRunner.class)
 @SpringBootTest
 public class StockServiceImplTest {
@@ -41,6 +47,15 @@ public class StockServiceImplTest {
 	
 	@Test
 	public void getStockByIdTest() {
+		
+		int id = 10;
+		Stock stock = new Stock(16,"Avast",600,"2022-01-22 12:09:54 PM");
+		when(repo.findById(id)).thenReturn(Optional.of(stock));
+		assertEquals(stock, service.getStockById(id));	
+	}
+	
+	@Test
+	public void getStockById_failureTest() {
 		
 		int id = 10;
 		Stock stock = new Stock(16,"Avast",600,"2022-01-22 12:09:54 PM");
