@@ -1,0 +1,25 @@
+version: '2'
+
+services:
+  stockapp:
+    image: 'stockmanagementapplication:latest'
+    build:
+      context: .
+    container_name: stockapp
+    ports:
+      - "8081:8081"
+    depends_on:
+      - stockdb
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgres-stockapp:5432/stock
+      - SPRING_DATASOURCE_USERNAME=compose-postgres
+      - SPRING_DATASOURCE_PASSWORD=compose-postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=create
+          
+  stockdb:
+    image: 'postgres'
+    container_name: postgres-stockapp
+    environment:
+      - POSTGRES_DB=stock
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
