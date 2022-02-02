@@ -143,3 +143,4 @@ http://localhost:8081/stock-api-docs after application startup.
 - We can implement caching so that the application performs faster.
 - We can implement filters to validate data for further improvements.
 
+Note: This application uses LOMBOK annotations so please enable option for Lombok annotations in the IDE if required.
