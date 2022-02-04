@@ -135,14 +135,14 @@ http://localhost:8081/stock-api-docs after application startup.
  }
 ```
 - Sample response is as below:
-
+```
  {
      "id": 2,
      "name": "Amazon",
      "currentPrice": 500.0,
      "lastUpdate": "2022-01-30 03:13:43 AM"
  }
-
+```
 ##### Scenario 5:> To delete a stock in postman
 
 - Select method as DELETE
