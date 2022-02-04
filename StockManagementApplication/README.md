@@ -109,9 +109,9 @@ http://localhost:8081/stock-api-docs after application startup.
 - Request body is below:
 ```
  {
-        "name":"Yahoo",
-        "currentPrice": 175
-    }
+    "name":"Yahoo",
+    "currentPrice": 175
+ }
 ```
 - Sample response is as below:
 ```
