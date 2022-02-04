@@ -109,7 +109,7 @@ public class StockControllerTest {
 	@Test
 	public void deleteStockById_whenStockFound_thenOK() throws Exception {
 		mvc.perform(delete("/api/stocks/{id}", 1))
-	      .andExpect(status().isOk());
+	      .andExpect(status().is(204));
 	}
 	
 	@Test

@@ -82,12 +82,12 @@ public class StockController {
 	
 	@Operation(summary = "Deletes stock detail for supplied id")
 	@ApiResponses(value = { 
-			  @ApiResponse(responseCode = "200", description = "Stock detail is deleted"),
+			  @ApiResponse(responseCode = "204", description = "Stock detail is deleted"),
 			  @ApiResponse(responseCode = "404", description = "Invalid id supplied")})
 	@DeleteMapping(DELETE_STOCK_BY_ID_ENDPOINT)
 	public ResponseEntity<Void> deleteStockById(@PathVariable int id) {
 	    service.delete(id);
-	    return ResponseEntity.ok().build();
+		return ResponseEntity.noContent().build();
 	}
 
 }

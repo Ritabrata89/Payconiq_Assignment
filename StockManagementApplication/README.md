@@ -136,6 +136,12 @@ http://localhost:8081/stock-api-docs after application startup.
 	    "lastUpdate": "2022-01-30 03:13:43 AM"
 	}
 
+##### Scenario 5:> To delete a stock in postman
+
+- Select method as DELETE
+- Request url: localhost:8081/api/stocks/2
+  Here 2 is a path variable which is the stock id to be supplied.
+- Status Code: 204 No Content
 
 #### Improvements to make
 
